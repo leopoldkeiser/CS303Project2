@@ -16,7 +16,14 @@ Morse_Tree::Morse_Tree(ifstream codeFile)
 	{
 		codeFile >> nextLetter;
 		codeFile >> nextCode;
-		add_code_to_tree(morse_tree.getRoot(), nextLetter, nextCode);
+		try
+		{
+			add_code_to_tree(morse_tree.getRoot(), nextLetter, nextCode);
+		}
+		catch(char e)
+		{
+			throw e;
+		}
 	}
 
 }
@@ -30,19 +37,23 @@ void Morse_Tree::add_code_to_tree(BTNode<Item_Type>* t, char letter, string code
 		return;
 	}
 
-	if (codeStr[0] == '.')
+	if (codeStr[0] == MORSE_DOT)
 	{
 		if (t->left == NULL)
 			t->left = new BTNode<Item_Type>(' ');
 		add_code_to_tree(t->left, letter, codeStr.substr(1, codeStr.length()));
 		return;
 	}
-	else
+	else if (codeStr[0] == MORSE_DASH)
 	{
 		if (t->right == NULL)
 			t->right = new BTNode<Item_Type>(' ');
 		add_code_to_tree(t->right, letter, codeStr.substr(1, codeStr.length()));
 		return;
+	}
+	else
+	{
+		throw letter;
 	}
 }
 
@@ -85,4 +96,12 @@ void Morse_Tree::to_string()
 
 Morse_Tree::~Morse_Tree()
 {
+}
+
+Morse_Tree& Morse_Tree::operator=(const Morse_Tree & m)
+{
+	const char MORSE_DOT = m.MORSE_DOT;
+	const char MORSE_DASH = m.MORSE_DASH;
+	morse_tree = m.morse_tree;
+	return *this;
 }

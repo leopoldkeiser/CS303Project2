@@ -17,9 +17,12 @@ public:
 	string decode(string& inputCode);
 	void to_string();
 	~Morse_Tree();
+	Morse_Tree& operator=(const Morse_Tree &m);
 
 private:
 	Binary_Tree<char> morse_tree;
+	const char MORSE_DASH = '_';
+	const char MORSE_DOT = '.';
 };
 
 
