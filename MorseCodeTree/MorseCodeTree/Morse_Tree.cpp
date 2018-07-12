@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Morse_Tree.h"
 #include "Binary_Tree.h"
 #include <iostream>

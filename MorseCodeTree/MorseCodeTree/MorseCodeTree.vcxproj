@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="Binary_Tree.h" />
     <ClInclude Include="BTNode.h" />
+    <ClInclude Include="Morse_Tree.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="String_Tokenizer.h" />
     <ClInclude Include="Syntax_Error.h" />
@@ -158,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MorseCodeTree.cpp" />
+    <ClCompile Include="Morse_Tree.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
