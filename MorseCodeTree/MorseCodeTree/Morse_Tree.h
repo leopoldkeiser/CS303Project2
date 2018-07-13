@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <string>
+#include <map>
 #include "Binary_Tree.h"
 using namespace std;
 
@@ -15,11 +16,12 @@ public:
 	void add_code_to_tree(BTNode<Item_Type>* t, char letter, string codeStr);
 	string encode(string& inputText);
 	string decode(string& inputCode);
-	void to_string();
+	void print_morse_tree();
 	~Morse_Tree();
 	Morse_Tree& operator=(const Morse_Tree &m);
 
 private:
+	map<char, string> morsemap;
 	Binary_Tree<char> morse_tree;
 	const char MORSE_DASH = '_';
 	const char MORSE_DOT = '.';
@@ -28,4 +30,3 @@ private:
 
 
 #endif
-

@@ -9,7 +9,7 @@ Morse_Tree::Morse_Tree()
 
 Morse_Tree::Morse_Tree(ifstream codeFile)
 {
-	morse_tree = Binary_Tree<char> ('0');
+	morse_tree = Binary_Tree<char>('0');
 	char nextLetter;
 	string nextCode;
 	while (codeFile.good())
@@ -18,9 +18,10 @@ Morse_Tree::Morse_Tree(ifstream codeFile)
 		codeFile >> nextCode;
 		try
 		{
+			morsemap.insert(pair<char, string>(nextLetter, nextCode));
 			add_code_to_tree(morse_tree.getRoot(), nextLetter, nextCode);
 		}
-		catch(char e)
+		catch (char e)
 		{
 			throw e;
 		}
@@ -60,7 +61,7 @@ void Morse_Tree::add_code_to_tree(BTNode<Item_Type>* t, char letter, string code
 string Morse_Tree::decode(string& inputCode)
 {
 	int index = 0;
-	string result= "";
+	string result = "";
 	BTNode<char>* current_node;
 
 	while (index < inputCode.size()) {
@@ -71,7 +72,8 @@ string Morse_Tree::decode(string& inputCode)
 			{
 				current_node = current_node->left;
 				++index;
-			} else if (inputCode[index] == '_')
+			}
+			else if (inputCode[index] == '_')
 			{
 				current_node = current_node->right;
 				++index;
@@ -89,7 +91,7 @@ string Morse_Tree::encode(string& inputText)
 	return result;
 }
 
-void Morse_Tree::to_string()
+void Morse_Tree::print_morse_tree()
 {
 	cout << morse_tree.to_string();
 }
