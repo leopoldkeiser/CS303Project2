@@ -17,11 +17,12 @@ public:
 	string encode(string& inputText);
 	string decode(string& inputCode);
 	void print_morse_tree();
+	void print_morse_map();
 	~Morse_Tree();
 	Morse_Tree& operator=(const Morse_Tree &m);
 
 private:
-	map<char, string> morsemap;
+	map<char, string> morse_map;
 	Binary_Tree<char> morse_tree;
 	const char MORSE_DASH = '_';
 	const char MORSE_DOT = '.';

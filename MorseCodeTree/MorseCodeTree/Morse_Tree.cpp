@@ -18,7 +18,7 @@ Morse_Tree::Morse_Tree(ifstream codeFile)
 		codeFile >> nextCode;
 		try
 		{
-			morsemap.insert(pair<char, string>(nextLetter, nextCode));
+			morse_map.insert(pair<char, string>(nextLetter, nextCode));
 			add_code_to_tree(morse_tree.getRoot(), nextLetter, nextCode);
 		}
 		catch (char e)
@@ -94,6 +94,12 @@ string Morse_Tree::encode(string& inputText)
 void Morse_Tree::print_morse_tree()
 {
 	cout << morse_tree.to_string();
+}
+
+void Morse_Tree::print_morse_map()
+{
+	for (map<char, string>::iterator i = morse_map.begin(); i != morse_map.end(); i++)
+		cout << i->first << "  " << i->second << endl;	
 }
 
 Morse_Tree::~Morse_Tree()
