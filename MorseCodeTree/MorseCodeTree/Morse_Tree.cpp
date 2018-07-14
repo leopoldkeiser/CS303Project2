@@ -9,7 +9,7 @@ Morse_Tree::Morse_Tree()
 
 Morse_Tree::Morse_Tree(ifstream codeFile)
 {
-	morse_tree = Binary_Tree<char>('0');
+	morse_tree = Binary_Tree<char>(' ');
 	char nextLetter;
 	string nextCode;
 	while (codeFile.good())
@@ -66,19 +66,25 @@ string Morse_Tree::decode(string& inputCode)
 
 	while (index < inputCode.size()) {
 		current_node = morse_tree.getRoot();
-		while (inputCode[index] != ' ' && index < inputCode.size())
+		while (!isspace(inputCode[index]) && index < inputCode.size())
 		{
-			if (inputCode[index] == '.')
+			if (inputCode[index] == MORSE_DOT)
 			{
 				current_node = current_node->left;
 				++index;
 			}
-			else if (inputCode[index] == '_')
+			else if (inputCode[index] == MORSE_DASH)
 			{
 				current_node = current_node->right;
 				++index;
 			}
+			else if (!isspace(inputCode[index]))
+			{
+				result = "Your input morsecode: " + inputCode  + " is invalid!";
+				return result;
+			}
 		}
+		if(current_node->data != ' ')
 		result += current_node->data;
 		++index;
 	}
