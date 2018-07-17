@@ -94,6 +94,18 @@ string Morse_Tree::decode(string& inputCode)
 string Morse_Tree::encode(string& inputText)
 {
 	string result;
+	for (int i = 0; i < inputText.size(); i++)
+	{
+		for (map<char, string>::iterator iter = morse_map.begin(); iter != morse_map.end(); iter++)
+		{
+			if (iter->first == inputText[i])
+			{
+				result += iter->second;
+				result += " ";
+				break;
+			}
+		}
+	}
 	return result;
 }
 
