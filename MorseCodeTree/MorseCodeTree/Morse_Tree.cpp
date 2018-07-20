@@ -61,7 +61,7 @@ void Morse_Tree::add_code_to_tree(BTNode<Item_Type>* t, char letter, string code
 string Morse_Tree::decode(string& inputCode)
 {
 	int index = 0;
-	string result = "";
+	string result;
 	BTNode<char>* current_node;
 
 	while (index < inputCode.size()) {
@@ -70,13 +70,28 @@ string Morse_Tree::decode(string& inputCode)
 		{
 			if (inputCode[index] == MORSE_DOT)
 			{
-				current_node = current_node->left;
-				++index;
+				if (current_node->left != NULL) {
+					current_node = current_node->left;
+					++index;
+				}
+				else
+				{
+					result = "Your input morsecode: " + inputCode + " is an invalid!";
+					return result;
+				}					
 			}
 			else if (inputCode[index] == MORSE_DASH)
 			{
-				current_node = current_node->right;
-				++index;
+				if(current_node->right != NULL)
+				{
+					current_node = current_node->right;
+					++index;
+				}
+				else
+				{
+					result = "Your input morsecode: " + inputCode + " is invalid!";
+					return result;
+				}
 			}
 			else if (!isspace(inputCode[index]))
 			{
@@ -84,8 +99,8 @@ string Morse_Tree::decode(string& inputCode)
 				return result;
 			}
 		}
-		if(current_node->data != ' ')
-		result += current_node->data;
+		if (current_node->data != ' ')
+			result += current_node->data;
 		++index;
 	}
 	return result;
