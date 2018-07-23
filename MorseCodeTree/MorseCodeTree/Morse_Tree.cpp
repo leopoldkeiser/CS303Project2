@@ -28,7 +28,6 @@ Morse_Tree::Morse_Tree(ifstream codeFile)
 			throw e;
 		}
 	}
-
 }
 
 // Add code to tree
@@ -70,7 +69,7 @@ Morse_Tree& Morse_Tree::operator=(const Morse_Tree & m)
 	return *this;
 }
 
-// Encode a plaintext string into Morse
+// Encode a plaintext string into Morse code
 string Morse_Tree::encode(string& inputText)
 {
 	string result;
@@ -108,7 +107,7 @@ string Morse_Tree::decode(string& inputCode)
 				}
 				else
 				{
-					result = "Your input morsecode: " + inputCode + " is an invalid!";
+					result = "Your input morsecode: " + inputCode + " is invalid!";
 					return result;
 				}					
 			}

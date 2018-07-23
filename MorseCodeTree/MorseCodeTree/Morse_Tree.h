@@ -19,7 +19,7 @@ public:
 	void add_code_to_tree(BTNode<Item_Type>* t, char letter, string codeStr);
 	// Overloading operator =
 	Morse_Tree& operator=(const Morse_Tree &m);
-	// Encode a plaintext string into Morse
+	// Encode a plaintext string into Morse code
 	string encode(string& inputText);
 	// Decode a Morse string back into plaintext
 	string decode(string& inputCode);
